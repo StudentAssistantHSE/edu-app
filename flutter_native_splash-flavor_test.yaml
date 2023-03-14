@@ -1,0 +1,10 @@
+flutter_native_splash:
+  color: "#14375F"
+  image: assets/splash/splash_white.png
+  android_12:
+    color: "#14375F"
+    image: assets/splash/android_12_splash_white.png
+  info_plist_files:
+    - 'ios/Runner/Info-Debug.plist'
+    - 'ios/Runner/Info-Release.plist'
+  android_screen_orientation: portrait
