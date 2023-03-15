@@ -1,5 +1,5 @@
 flutter_icons:
-  android: false
+  android: true
   ios: true
   remove_alpha_ios: true
-  image_path: "assets/launcher_icons/icon_pink.png"
+  image_path: "assets/launcher_icon.png"

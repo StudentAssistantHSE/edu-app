@@ -1,9 +1,9 @@
 flutter_native_splash:
-  color: "#ecf3f3"
-  image: assets/splash/splash_black.png
+  color: "#f6f6f7"
+  image: assets/splash.png
   android_12:
-    color: "#ecf3f3"
-    image: assets/splash/android_12_splash_black.png
+    color: "#f6f6f7"
+    image: assets/splash.png
   info_plist_files:
     - 'ios/Runner/Info-Debug.plist'
     - 'ios/Runner/Info-Release.plist'
