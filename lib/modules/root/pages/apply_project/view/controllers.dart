@@ -11,17 +11,17 @@ class MessageInputController extends InputStateController<ApplyProjectEvent, App
   ApplyProjectEvent? onChangedEventBuilder(BuildContext context, String value) => ApplyProjectMessageFieldChanged(value);
 
   @override
-  String? hintSelector(S translations) => translations.root_apply_messageInputHint;
+  String? hintSelector(S translations) => translations.root_applyProject_messageInputHint;
 
   @override
   bool disabledSelector(ApplyProjectState state) => state.isInProgress || state.isSuccess;
 }
 
-class SubmitApplyButtonController extends ButtonStateController<ApplyProjectEvent, ApplyProjectState> {
-  const SubmitApplyButtonController();
+class SubmitApplyProjectButtonController extends ButtonStateController<ApplyProjectEvent, ApplyProjectState> {
+  const SubmitApplyProjectButtonController();
 
   @override
-  String textSelector(S translations) => translations.root_apply_applyButtonText;
+  String textSelector(S translations) => translations.root_applyProject_applyButtonText;
 
   @override
   ApplyProjectEvent? eventBuilder(BuildContext context) => const ApplyProjectSubmitted();

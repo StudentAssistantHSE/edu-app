@@ -19,14 +19,14 @@ class ApplyProjectView extends StatelessWidget {
           NavigationProvider.of(context).pop();
           break;
         case ApplyProjectStatus.alreadyApplied:
-          EduSnackBar.showError(context, message: translations.root_apply_alreadyAppliedErrorMessage);
+          EduSnackBar.showError(context, message: translations.root_applyProject_alreadyAppliedErrorMessage);
           NavigationProvider.of(context).pop();
           break;
         case ApplyProjectStatus.connectionError:
-          EduSnackBar.showError(context, message: translations.root_apply_connectionErrorMessage);
+          EduSnackBar.showError(context, message: translations.root_applyProject_connectionErrorMessage);
           break;
         case ApplyProjectStatus.undefinedError:
-          EduSnackBar.showError(context, message: translations.root_apply_undefinedErrorMessage);
+          EduSnackBar.showError(context, message: translations.root_applyProject_undefinedErrorMessage);
           break;
         case ApplyProjectStatus.notAuthorized:
           context.read<AuthenticationBloc>().add(const AuthenticationLoggedOut());
@@ -49,7 +49,7 @@ class ApplyProjectView extends StatelessWidget {
             ),
             SizedBox(height: 16),
             PrimaryButtonWidget<ApplyProjectBloc, ApplyProjectEvent, ApplyProjectState>(
-              controller: SubmitApplyButtonController(),
+              controller: SubmitApplyProjectButtonController(),
             ),
             SizedBox(height: 16),
           ],

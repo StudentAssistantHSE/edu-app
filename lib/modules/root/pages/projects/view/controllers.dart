@@ -13,7 +13,7 @@ class ProjectsListController extends RefreshableModelsListController<ProjectMode
 
   @override
   Widget itemBuilder(BuildContext context, ProjectModel model) {
-    final translations = context.read<S>();
+    final translations = context.watch<S>();
     return ProjectCard(
       contactsTitle: translations.root_projects_projectCard_contactsTitle,
       nameTitle: translations.root_projects_projectCard_nameTitle,

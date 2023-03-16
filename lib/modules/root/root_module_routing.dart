@@ -7,6 +7,7 @@ class RootModuleRouting extends BaseModuleRouting<RootModuleArguments> {
   static const myProjects = 'my-projects';
   static const applications = 'applications';
   static const applyProject = 'apply-project';
+  static const createProject = 'create-project';
 
   static const moduleName = 'root';
 
@@ -36,6 +37,10 @@ class RootModuleRouting extends BaseModuleRouting<RootModuleArguments> {
     RootModuleRouting.applyProject: (settings) => MaterialPageRoute<void>(
       settings: settings,
       builder: (context) => ApplyProjectPage(),
+    ),
+    RootModuleRouting.createProject: (settings) => MaterialPageRoute<void>(
+      settings: settings,
+      builder: (context) => CreateProjectPage(),
     ),
   };
 

@@ -50,6 +50,11 @@ dependencies:
       url: git@github.com:KutilinSA/edu-app-core.git
       path: features/feature_authentication
       ref: v0.0.1
+  feature_create_project:
+    git:
+      url: git@github.com:KutilinSA/edu-app-core.git
+      path: features/feature_create_project
+      ref: v0.0.1
   feature_login:
     git:
       url: git@github.com:KutilinSA/edu-app-core.git
@@ -59,6 +64,11 @@ dependencies:
     git:
       url: git@github.com:KutilinSA/edu-app-core.git
       path: features/feature_models_list_provider
+      ref: v0.0.1
+  feature_process_application:
+    git:
+      url: git@github.com:KutilinSA/edu-app-core.git
+      path: features/feature_process_application
       ref: v0.0.1
   feature_registration:
     git:

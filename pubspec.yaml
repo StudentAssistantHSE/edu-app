@@ -26,10 +26,14 @@ dependencies:
     path: ../edu-app-core/features/feature_apply_project
   feature_authentication:
     path: ../edu-app-core/features/feature_authentication
+  feature_create_project:
+    path: ../edu-app-core/features/feature_create_project
   feature_login:
     path: ../edu-app-core/features/feature_login
   feature_models_list_provider:
     path: ../edu-app-core/features/feature_models_list_provider
+  feature_process_application:
+    path: ../edu-app-core/features/feature_process_application
   feature_registration:
     path: ../edu-app-core/features/feature_registration
   feature_settings:

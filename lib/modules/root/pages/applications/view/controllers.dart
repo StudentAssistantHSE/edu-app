@@ -10,13 +10,15 @@ class SentApplicationsListController extends RefreshableModelsListController<App
 
   @override
   Widget itemBuilder(BuildContext context, ApplicationModel model) {
-    final translations = context.read<S>();
+    final translations = context.watch<S>();
     return ApplicationCard(
       messageTitle: translations.root_applications_applicationCard_messageTitle,
       statusTitle: translations.root_applications_applicationCard_statusTitle,
-      statusAppliedText: translations.root_applications_applicationCard_statusAcceptedText,
+      statusAppliedText: translations.root_applications_applicationCard_statusAppliedText,
       statusRejectedText: translations.root_applications_applicationCard_statusRejectedText,
       statusAcceptedText: translations.root_applications_applicationCard_statusAcceptedText,
+      processApplicationRejectText: translations.root_applications_applicationCard_processApplicationRejectText,
+      processApplicationAcceptText: translations.root_applications_applicationCard_processApplicationAcceptText,
       application: model,
     );
   }
@@ -27,13 +29,15 @@ class IncomingApplicationsListController extends RefreshableModelsListController
 
   @override
   Widget itemBuilder(BuildContext context, ApplicationModel model) {
-    final translations = context.read<S>();
+    final translations = context.watch<S>();
     return ApplicationCard(
       messageTitle: translations.root_applications_applicationCard_messageTitle,
       statusTitle: translations.root_applications_applicationCard_statusTitle,
-      statusAppliedText: translations.root_applications_applicationCard_statusAcceptedText,
+      statusAppliedText: translations.root_applications_applicationCard_statusAppliedText,
       statusRejectedText: translations.root_applications_applicationCard_statusRejectedText,
       statusAcceptedText: translations.root_applications_applicationCard_statusAcceptedText,
+      processApplicationRejectText: translations.root_applications_applicationCard_processApplicationRejectText,
+      processApplicationAcceptText: translations.root_applications_applicationCard_processApplicationAcceptText,
       application: model,
     );
   }

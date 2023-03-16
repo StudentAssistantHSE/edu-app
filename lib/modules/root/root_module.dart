@@ -1,6 +1,7 @@
 import 'package:edu_app/di/locator.dart';
 import 'package:edu_app/modules/root/pages/applications/applications_page.dart';
 import 'package:edu_app/modules/root/pages/apply_project/apply_project_page.dart';
+import 'package:edu_app/modules/root/pages/create_project/create_project_page.dart';
 import 'package:edu_app/modules/root/pages/my_projects/my_projects_page.dart';
 import 'package:edu_app/modules/root/pages/projects/projects_page.dart';
 import 'package:edu_app/modules/root/pages/root/root_page.dart';
