@@ -1,6 +1,6 @@
-import 'package:edu_app/modules/debug/debug_module.dart';
 import 'package:edu_core/edu_core.dart';
 import 'package:edu_ui_components/edu_ui_components.dart';
+import 'package:feature_authentication/feature_authentication.dart';
 import 'package:feature_settings/feature_settings.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -36,7 +36,7 @@ class DebugView extends StatelessWidget {
           const SizedBox(height: 8),
           PrimaryButton(
             text: 'Logout',
-            onPressed: () => ModuleControllerProvider.of<DebugModuleController>(context)?.onLogout(context),
+            onPressed: () => context.read<AuthenticationBloc>().add(const AuthenticationLoggedOut()),
             expand: true,
           ),
         ],

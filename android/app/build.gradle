@@ -40,29 +40,29 @@ android {
 
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId "com.eduapp"
+        applicationId "com.eduhelperapp"
         minSdkVersion 23
         targetSdkVersion 32
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
     }
 
-    flavorDimensions "eduapp"
+    flavorDimensions "eduhelperapp"
     productFlavors {
         flavor_test {
-            dimension "eduapp"
+            dimension "eduhelperapp"
             applicationIdSuffix ".test"
             resValue "string", "app_name", "Edu Test"
         }
 
         flavor_dev {
-            dimension "eduapp"
+            dimension "eduhelperapp"
             applicationIdSuffix ".dev"
             resValue "string", "app_name", "Edu Dev"
         }
 
         flavor_production {
-            dimension "eduapp"
+            dimension "eduhelperapp"
             resValue "string", "app_name", "Edu"
         }
     }

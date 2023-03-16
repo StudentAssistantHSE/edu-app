@@ -12,7 +12,7 @@ class RootPage extends BasePage<RootPageArguments> {
     blocsBuilder: (pageContext, pageArguments) => [
       BlocProvider<SharedRoutesNavigatorBloc>(
         create: (_) => SharedRoutesNavigatorBloc(
-          initialIndex: 2,
+          initialIndex: 0,
           initialRoutes: RootModuleRouting.initialSharedRoutes,
         ),
       ),

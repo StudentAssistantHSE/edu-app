@@ -4,6 +4,7 @@ import 'package:edu_app/common/views/error/error_view_controller.dart';
 import 'package:edu_localizations/edu_localizations.dart';
 import 'package:edu_models/edu_models.dart';
 import 'package:edu_ui_components/edu_ui_components.dart';
+import 'package:feature_authentication/feature_authentication.dart';
 import 'package:feature_models_list_provider/feature_models_list_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -82,6 +83,9 @@ class _BaseRefreshableModelsListState<T extends BaseModel> extends State<BaseRef
             EduSnackBar.showError(context, message: 'error');
           }
           break;
+        case ModelsListProviderStatus.notAuthorized:
+          context.read<AuthenticationBloc>().add(const AuthenticationLoggedOut());
+          break;
         default:
           break;
       }
@@ -107,10 +111,6 @@ class _BaseRefreshableModelsListState<T extends BaseModel> extends State<BaseRef
         );
       }
 
-      if (models.isEmpty) {
-        return const Center(child: Text('Nothing found'));
-      }
-
       return SmartRefresher(
         scrollController: widget.scrollController,
         header: CustomHeader(
@@ -129,7 +129,9 @@ class _BaseRefreshableModelsListState<T extends BaseModel> extends State<BaseRef
           queryParameters: widget.controller.queryParameters(context),
         )),
         controller: _refreshController,
-        child: widget.listViewBuilder(context, models),
+        child: models.isEmpty
+          ? const _NoItemsTitle()
+          : widget.listViewBuilder(context, models),
       );
     },
   );
@@ -140,7 +142,7 @@ class _LoadingIndicator extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => const Padding(
-    padding: EdgeInsets.only(bottom: 8),
+    padding: EdgeInsets.only(bottom: 16, top: 8),
     child: LoadingIndicator(scale: 1.2),
   );
 }
@@ -184,11 +186,21 @@ class _UndefinedErrorViewController<T extends BaseModel> extends ErrorViewContro
   String? subtitleSelector(S translations) => translations.common_lists_loadingUndefinedErrorMessageSubtitle;
 
   @override
-  String tryAgainButtonTextSelector(S translations) => translations.root_home_weatherLoadingTryAgainButtonText;
+  String tryAgainButtonTextSelector(S translations) => translations.common_lists_loadingTryAgainButtonText;
 
   @override
   void onTryAgainButtonTap(BuildContext context) => context.read<ModelsListProviderBloc<T>>()
       .add(ModelsListProviderRefreshRequested(
         queryParameters: controller.queryParameters(context),
       ));
+}
+
+class _NoItemsTitle extends StatelessWidget {
+  const _NoItemsTitle({ Key? key }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) => Center(child: Text(
+    context.select<S, String>((value) => value.common_lists_no_items_title),
+    style: Theme.of(context).textTheme.titleMedium,
+  ));
 }

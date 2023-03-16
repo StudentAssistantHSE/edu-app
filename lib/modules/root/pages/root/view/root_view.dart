@@ -30,7 +30,11 @@ class RootView extends StatelessWidget {
             ),
             BottomNavigationBarItem(
               icon: const Icon(CustomIcons.home, size: 24),
-              label: translations.root_bottomNavigationBar_homeLabel,
+              label: translations.root_bottomNavigationBar_myProjectsLabel,
+            ),
+            BottomNavigationBarItem(
+              icon: const Icon(CustomIcons.comment, size: 24),
+              label: translations.root_bottomNavigationBar_applicationsLabel,
             ),
           ],
         );

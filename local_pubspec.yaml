@@ -22,6 +22,8 @@ dependencies:
   edu_ui_components:
     path: ../edu-app-core/edu_ui_components
 
+  feature_apply_project:
+    path: ../edu-app-core/features/feature_apply_project
   feature_authentication:
     path: ../edu-app-core/features/feature_authentication
   feature_login:

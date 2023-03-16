@@ -5,12 +5,15 @@ class RootModuleRouting extends BaseModuleRouting<RootModuleArguments> {
 
   static const projects = 'projects';
   static const myProjects = 'my-projects';
+  static const applications = 'applications';
+  static const applyProject = 'apply-project';
 
   static const moduleName = 'root';
 
   static const initialSharedRoutes = [
     projects,
     myProjects,
+    applications,
   ];
 
   static final RoutesTable _table = {
@@ -24,7 +27,15 @@ class RootModuleRouting extends BaseModuleRouting<RootModuleArguments> {
     ),
     RootModuleRouting.myProjects: (settings) => MaterialPageRoute<void>(
       settings: settings,
-      builder: (context) => const Center(child: Text('my projects')),
+      builder: (context) => MyProjectsPage(),
+    ),
+    RootModuleRouting.applications: (settings) => MaterialPageRoute<void>(
+      settings: settings,
+      builder: (context) => const ApplicationsPage(),
+    ),
+    RootModuleRouting.applyProject: (settings) => MaterialPageRoute<void>(
+      settings: settings,
+      builder: (context) => ApplyProjectPage(),
     ),
   };
 

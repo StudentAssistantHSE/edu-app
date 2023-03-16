@@ -67,9 +67,7 @@ class RegistrationView extends StatelessWidget {
                 controller: PageTitleTextController(),
               ),
               SizedBox(height: 24),
-              Expanded(
-                child: RegistrationFields(),
-              ),
+              RegistrationFields(),
             ],
           ),
         ),

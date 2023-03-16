@@ -40,6 +40,11 @@ dependencies:
       path: edu_ui_components
       ref: v0.0.1
 
+  feature_apply_project:
+    git:
+      url: git@github.com:KutilinSA/edu-app-core.git
+      path: features/feature_apply_project
+      ref: v0.0.1
   feature_authentication:
     git:
       url: git@github.com:KutilinSA/edu-app-core.git

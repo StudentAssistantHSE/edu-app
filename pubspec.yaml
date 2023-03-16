@@ -10,61 +10,30 @@ environment:
 
 dependencies:
   edu_core:
-    git:
-      url: git@github.com:KutilinSA/edu-app-core.git
-      path: edu_core
-      ref: v0.0.1
+    path: ../edu-app-core/edu_core
   edu_localizations:
-    git:
-      url: git@github.com:KutilinSA/edu-app-core.git
-      path: edu_localizations
-      ref: v0.0.1
+    path: ../edu-app-core/edu_localizations
   edu_models:
-    git:
-      url: git@github.com:KutilinSA/edu-app-core.git
-      path: edu_models
-      ref: v0.0.1
+    path: ../edu-app-core/edu_models
   edu_repositories:
-    git:
-      url: git@github.com:KutilinSA/edu-app-core.git
-      path: edu_repositories
-      ref: v0.0.1
+    path: ../edu-app-core/edu_repositories
   edu_services:
-    git:
-      url: git@github.com:KutilinSA/edu-app-core.git
-      path: edu_services
-      ref: v0.0.1
+    path: ../edu-app-core/edu_services
   edu_ui_components:
-    git:
-      url: git@github.com:KutilinSA/edu-app-core.git
-      path: edu_ui_components
-      ref: v0.0.1
+    path: ../edu-app-core/edu_ui_components
 
+  feature_apply_project:
+    path: ../edu-app-core/features/feature_apply_project
   feature_authentication:
-    git:
-      url: git@github.com:KutilinSA/edu-app-core.git
-      path: features/feature_authentication
-      ref: v0.0.1
+    path: ../edu-app-core/features/feature_authentication
   feature_login:
-    git:
-      url: git@github.com:KutilinSA/edu-app-core.git
-      path: features/feature_login
-      ref: v0.0.1
+    path: ../edu-app-core/features/feature_login
   feature_models_list_provider:
-    git:
-      url: git@github.com:KutilinSA/edu-app-core.git
-      path: features/feature_models_list_provider
-      ref: v0.0.1
+    path: ../edu-app-core/features/feature_models_list_provider
   feature_registration:
-    git:
-      url: git@github.com:KutilinSA/edu-app-core.git
-      path: features/feature_registration
-      ref: v0.0.1
+    path: ../edu-app-core/features/feature_registration
   feature_settings:
-    git:
-      url: git@github.com:KutilinSA/edu-app-core.git
-      path: features/feature_settings
-      ref: v0.0.1
+    path: ../edu-app-core/features/feature_settings
 
   flutter:
     sdk: flutter
@@ -82,10 +51,7 @@ dev_dependencies:
   flutter_native_splash: 2.2.2
   injectable_generator: 2.1.4
   lint_rules:
-    git:
-      url: git@github.com:KutilinSA/edu-app-core.git
-      path: lint_rules
-      ref: v0.0.1
+    path: ../edu-app-core/lint_rules
 
 flutter:
   uses-material-design: true
