@@ -94,7 +94,6 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_bloc: 8.1.1
-  formz: 0.6.0
   get_it: 7.2.0
   injectable: 2.1.0
   pull_to_refresh: 2.0.0

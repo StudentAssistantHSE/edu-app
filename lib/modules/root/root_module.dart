@@ -3,6 +3,7 @@ import 'package:edu_app/modules/root/pages/applications/applications_page.dart';
 import 'package:edu_app/modules/root/pages/apply_project/apply_project_page.dart';
 import 'package:edu_app/modules/root/pages/create_project/create_project_page.dart';
 import 'package:edu_app/modules/root/pages/my_projects/my_projects_page.dart';
+import 'package:edu_app/modules/root/pages/process_application/process_application_page.dart';
 import 'package:edu_app/modules/root/pages/profile/profile_page.dart';
 import 'package:edu_app/modules/root/pages/projects/projects_page.dart';
 import 'package:edu_app/modules/root/pages/recommendations/recommendations_page.dart';

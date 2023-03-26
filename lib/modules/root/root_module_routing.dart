@@ -10,6 +10,7 @@ class RootModuleRouting extends BaseModuleRouting<RootModuleArguments> {
   static const profile = 'profile';
   static const applyProject = 'apply-project';
   static const createProject = 'create-project';
+  static const processApplication = 'process-application';
 
   static const moduleName = 'root';
 
@@ -53,6 +54,10 @@ class RootModuleRouting extends BaseModuleRouting<RootModuleArguments> {
     RootModuleRouting.profile: (settings) => MaterialPageRoute<void>(
       settings: settings,
       builder: (context) => ProfilePage(),
+    ),
+    RootModuleRouting.processApplication: (settings) => MaterialPageRoute<void>(
+      settings: settings,
+      builder: (context) => ProcessApplicationPage(),
     ),
   };
 

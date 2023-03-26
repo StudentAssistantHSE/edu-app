@@ -16,6 +16,7 @@ class CreateProjectPage extends BasePage<CreateProjectPageArguments> {
     blocsBuilder: (pageContext, pageArguments) => [
       BlocProvider<CreateProjectBloc>(
         create: (context) => CreateProjectBloc(
+          initialData: pageArguments?.initialData,
           createProjectRepository: CreateProjectRepository(
             context.read<NetworkRepository>(),
           ),

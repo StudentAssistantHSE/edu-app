@@ -1,7 +1,7 @@
 part of 'create_project_page.dart';
 
 class CreateProjectPageArguments {
-  final int projectId;
+  final ProjectModel? initialData;
 
-  const CreateProjectPageArguments(this.projectId);
+  const CreateProjectPageArguments(this.initialData);
 }

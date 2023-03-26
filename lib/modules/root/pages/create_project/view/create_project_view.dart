@@ -18,7 +18,7 @@ class CreateProjectView extends StatelessWidget {
       final translations = context.read<S>();
       switch (state.status) {
         case CreateProjectStatus.success:
-          NavigationProvider.of(context).pop();
+          NavigationProvider.of(context).pop(true);
           break;
         case CreateProjectStatus.connectionError:
           EduSnackBar.showError(context, message: translations.root_createProject_connectionErrorMessage);
