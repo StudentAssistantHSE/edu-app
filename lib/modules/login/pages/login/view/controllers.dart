@@ -15,6 +15,9 @@ class EmailInputController extends InputStateController<LoginEvent, LoginState> 
   const EmailInputController();
 
   @override
+  String? initialValue(LoginState state) => state.email.value;
+
+  @override
   LoginEvent? onChangedEventBuilder(BuildContext context, String value) => LoginEmailFieldChanged(value);
 
   @override
@@ -29,6 +32,9 @@ class EmailInputController extends InputStateController<LoginEvent, LoginState> 
 
 class PasswordInputController extends InputStateController<LoginEvent, LoginState> {
   const PasswordInputController();
+
+  @override
+  String? initialValue(LoginState state) => state.password.value;
 
   @override
   LoginEvent? onChangedEventBuilder(BuildContext context, String value) => LoginPasswordFieldChanged(value);

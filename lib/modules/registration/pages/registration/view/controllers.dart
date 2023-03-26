@@ -57,6 +57,9 @@ class PasswordInputController extends InputStateController<RegistrationEvent, Re
   const PasswordInputController();
 
   @override
+  String? initialValue(RegistrationState state) => state.password.value;
+
+  @override
   RegistrationEvent? onChangedEventBuilder(BuildContext context, String value) => RegistrationPasswordFieldChanged(value);
 
   @override
@@ -104,6 +107,9 @@ class PasswordInputController extends InputStateController<RegistrationEvent, Re
 
 class RepeatedPasswordInputController extends InputStateController<RegistrationEvent, RegistrationState> {
   const RepeatedPasswordInputController();
+
+  @override
+  String? initialValue(RegistrationState state) => state.repeatedPassword.value;
 
   @override
   RegistrationEvent? onChangedEventBuilder(BuildContext context, String value) => RegistrationRepeatedPasswordFieldChanged(value);

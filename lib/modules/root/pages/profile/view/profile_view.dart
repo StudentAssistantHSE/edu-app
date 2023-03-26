@@ -1,6 +1,5 @@
 import 'package:edu_app/common/common.dart';
 import 'package:edu_app/modules/root/pages/profile/view/controllers.dart';
-import 'package:edu_app/modules/root/pages/profile_editing/profile_editing_page.dart';
 import 'package:edu_app/modules/root/root_module.dart';
 import 'package:edu_localizations/edu_localizations.dart';
 import 'package:edu_models/edu_models.dart';
@@ -43,9 +42,8 @@ class _ProfileViewState extends State<ProfileView> {
             }
             return EduIconButton(
               icon: const Icon(CustomIcons.pencil),
-              onPressed: () => NavigationProvider.of(context).pushNamed(
-                RootModuleRouting.profileEditing,
-                arguments: ProfileEditingPageArguments(model),
+              onPressed: () => ModuleControllerProvider.of<RootModuleController>(context)?.openProfileEditing(
+                model,
               ).then((value) {
                 if ((value as bool?) ?? false) {
                   context.read<ModelProviderBloc<UserModel>>().add(const ModelProviderLoadingRequested(refreshState: true));
@@ -121,6 +119,7 @@ class _ProfileViewState extends State<ProfileView> {
               EduCard(
                 padding: const EdgeInsets.all(16.0),
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const TextWidget(
                       textStyle: TextThemeReference.title,
@@ -138,6 +137,7 @@ class _ProfileViewState extends State<ProfileView> {
               EduCard(
                 padding: const EdgeInsets.all(16.0),
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const TextWidget(
                       textStyle: TextThemeReference.title,
@@ -155,6 +155,7 @@ class _ProfileViewState extends State<ProfileView> {
               EduCard(
                 padding: const EdgeInsets.all(16.0),
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const TextWidget(
                       textStyle: TextThemeReference.title,
@@ -181,6 +182,7 @@ class _ProfileViewState extends State<ProfileView> {
               EduCard(
                 padding: const EdgeInsets.all(16.0),
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const TextWidget(
                       textStyle: TextThemeReference.title,
@@ -202,6 +204,7 @@ class _ProfileViewState extends State<ProfileView> {
               EduCard(
                 padding: const EdgeInsets.all(16.0),
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const TextWidget(
                       textStyle: TextThemeReference.title,

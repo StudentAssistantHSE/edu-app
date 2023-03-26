@@ -4,10 +4,10 @@ import 'package:edu_app/modules/root/pages/apply_project/apply_project_page.dart
 import 'package:edu_app/modules/root/pages/create_project/create_project_page.dart';
 import 'package:edu_app/modules/root/pages/my_projects/my_projects_page.dart';
 import 'package:edu_app/modules/root/pages/profile/profile_page.dart';
-import 'package:edu_app/modules/root/pages/profile_editing/profile_editing_page.dart';
 import 'package:edu_app/modules/root/pages/projects/projects_page.dart';
 import 'package:edu_app/modules/root/pages/recommendations/recommendations_page.dart';
 import 'package:edu_app/modules/root/pages/root/root_page.dart';
+import 'package:edu_models/edu_models.dart';
 import 'package:edu_repositories/edu_repositories.dart';
 import 'package:edu_ui_components/edu_ui_components.dart';
 import 'package:feature_authentication/feature_authentication.dart';
@@ -25,7 +25,7 @@ class RootModule extends BaseModule<RootModuleArguments, RootModuleRouting, Root
   }) : super(
     moduleControllerBuilder: controllerBuilder,
     moduleRouting: const RootModuleRouting(),
-    repositoriesBuilder: (pageContext, pageArguments) => [
+    repositoriesBuilder: (moduleContext, moduleArguments) => [
       RepositoryProvider<NetworkRepository>(
         create: (context) => locator.repositories.networkRepository(
           context.read<AuthenticationBloc>().state.token.value,

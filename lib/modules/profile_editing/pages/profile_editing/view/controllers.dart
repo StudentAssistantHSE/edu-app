@@ -7,46 +7,6 @@ import 'package:feature_profile_editing/feature_profile_editing.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class CategoriesConnectionErrorViewController extends ErrorViewController {
-  @override
-  ErrorImageType get type => ErrorImageType.connectionError;
-
-  const CategoriesConnectionErrorViewController();
-
-  @override
-  String titleSelector(S translations) => translations.root_profileEditing_connectionErrorMessage;
-
-  @override
-  String? subtitleSelector(S translations) => null;
-
-  @override
-  String tryAgainButtonTextSelector(S translations) => translations.root_profileEditing_tryAgainButtonText;
-
-  @override
-  void onTryAgainButtonTap(BuildContext context) => context.read<ModelsListProviderBloc<CategoryModel>>()
-      .add(const ModelsListProviderRefreshRequested());
-}
-
-class CategoriesUndefinedErrorViewController extends ErrorViewController {
-  @override
-  ErrorImageType get type => ErrorImageType.undefinedError;
-
-  const CategoriesUndefinedErrorViewController();
-
-  @override
-  String titleSelector(S translations) => translations.root_profileEditing_undefinedErrorMessageTitle;
-
-  @override
-  String? subtitleSelector(S translations) => translations.root_profileEditing_undefinedErrorMessageSubtitle;
-
-  @override
-  String tryAgainButtonTextSelector(S translations) => translations.root_profileEditing_tryAgainButtonText;
-
-  @override
-  void onTryAgainButtonTap(BuildContext context) => context.read<ModelsListProviderBloc<CategoryModel>>()
-      .add(const ModelsListProviderRefreshRequested());
-}
-
 class FacultiesConnectionErrorViewController extends ErrorViewController {
   @override
   ErrorImageType get type => ErrorImageType.connectionError;
@@ -54,13 +14,13 @@ class FacultiesConnectionErrorViewController extends ErrorViewController {
   const FacultiesConnectionErrorViewController();
 
   @override
-  String titleSelector(S translations) => translations.root_profileEditing_connectionErrorMessage;
+  String titleSelector(S translations) => translations.profileEditing_profileEditing_connectionErrorMessage;
 
   @override
   String? subtitleSelector(S translations) => null;
 
   @override
-  String tryAgainButtonTextSelector(S translations) => translations.root_profileEditing_tryAgainButtonText;
+  String tryAgainButtonTextSelector(S translations) => translations.profileEditing_profileEditing_tryAgainButtonText;
 
   @override
   void onTryAgainButtonTap(BuildContext context) => context.read<ModelsListProviderBloc<FacultyModel>>()
@@ -74,17 +34,52 @@ class FacultiesUndefinedErrorViewController extends ErrorViewController {
   const FacultiesUndefinedErrorViewController();
 
   @override
-  String titleSelector(S translations) => translations.root_profileEditing_undefinedErrorMessageTitle;
+  String titleSelector(S translations) => translations.profileEditing_profileEditing_undefinedErrorMessageTitle;
 
   @override
-  String? subtitleSelector(S translations) => translations.root_profileEditing_undefinedErrorMessageSubtitle;
+  String? subtitleSelector(S translations) => translations.profileEditing_profileEditing_undefinedErrorMessageSubtitle;
 
   @override
-  String tryAgainButtonTextSelector(S translations) => translations.root_profileEditing_tryAgainButtonText;
+  String tryAgainButtonTextSelector(S translations) => translations.profileEditing_profileEditing_tryAgainButtonText;
 
   @override
   void onTryAgainButtonTap(BuildContext context) => context.read<ModelsListProviderBloc<FacultyModel>>()
       .add(const ModelsListProviderRefreshRequested());
+}
+
+class EmailTitleTextController extends TextController {
+  const EmailTitleTextController();
+
+  @override
+  String textSelector(S translations) => translations.profileEditing_profileEditing_emailTitle;
+}
+
+class FullNameTitleTextController extends TextController {
+  const FullNameTitleTextController();
+
+  @override
+  String textSelector(S translations) => translations.profileEditing_profileEditing_fullNameTitle;
+}
+
+class FacultyTitleTextController extends TextController {
+  const FacultyTitleTextController();
+
+  @override
+  String textSelector(S translations) => translations.profileEditing_profileEditing_facultyTitle;
+}
+
+class BioTitleTextController extends TextController {
+  const BioTitleTextController();
+
+  @override
+  String textSelector(S translations) => translations.profileEditing_profileEditing_bioTitle;
+}
+
+class CategoriesTitleTextController extends TextController {
+  const CategoriesTitleTextController();
+
+  @override
+  String textSelector(S translations) => translations.profileEditing_profileEditing_categoriesTitle;
 }
 
 class EmailInputController extends InputStateController<ProfileEditingEvent, ProfileEditingState> {
@@ -97,7 +92,7 @@ class EmailInputController extends InputStateController<ProfileEditingEvent, Pro
   ProfileEditingEvent? onChangedEventBuilder(BuildContext context, String value) => ProfileEditingEmailFieldChanged(value);
 
   @override
-  String? hintSelector(S translations) => translations.root_profileEditing_emailInputHint;
+  String? hintSelector(S translations) => translations.profileEditing_profileEditing_emailInputHint;
 
   @override
   bool errorSelector(ProfileEditingState state) => !state.email.isPure && state.email.isNotValid;
@@ -116,7 +111,7 @@ class FullNameInputController extends InputStateController<ProfileEditingEvent, 
   ProfileEditingEvent? onChangedEventBuilder(BuildContext context, String value) => ProfileEditingFullNameFieldChanged(value);
 
   @override
-  String? hintSelector(S translations) => translations.root_profileEditing_fullNameInputHint;
+  String? hintSelector(S translations) => translations.profileEditing_profileEditing_fullNameInputHint;
 
   @override
   bool errorSelector(ProfileEditingState state) => !state.fullName.isPure && state.fullName.isNotValid;
@@ -135,7 +130,7 @@ class BioInputController extends InputStateController<ProfileEditingEvent, Profi
   ProfileEditingEvent? onChangedEventBuilder(BuildContext context, String value) => ProfileEditingBioFieldChanged(value);
 
   @override
-  String? hintSelector(S translations) => translations.root_profileEditing_bioNotSetText;
+  String? hintSelector(S translations) => translations.profileEditing_profileEditing_bioNotSetText;
 
   @override
   bool errorSelector(ProfileEditingState state) => !state.bio.isPure && state.bio.isNotValid;
@@ -148,7 +143,7 @@ class SubmitProfileEditingButtonController extends ButtonStateController<Profile
   const SubmitProfileEditingButtonController();
 
   @override
-  String textSelector(S translations) => translations.root_profileEditing_submitButtonText;
+  String textSelector(S translations) => translations.profileEditing_profileEditing_submitButtonText;
 
   @override
   ProfileEditingEvent? eventBuilder(BuildContext context) => const ProfileEditingSubmitted();

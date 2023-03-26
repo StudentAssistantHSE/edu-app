@@ -11,19 +11,12 @@ class ProjectsListController extends RefreshableModelsListController<ProjectMode
   const ProjectsListController();
 
   @override
-  Widget itemBuilder(BuildContext context, ProjectModel model) {
-    final translations = context.watch<S>();
-    return ProjectCard(
-      contactsTitle: translations.root_projects_projectCard_contactsTitle,
-      nameTitle: translations.root_projects_projectCard_nameTitle,
-      descriptionTitle: translations.root_projects_projectCard_descriptionTitle,
-      applyButtonText: translations.root_projects_projectCard_applyButtonText,
-      recommendationsText: translations.root_projects_projectCard_recommendationsText,
-      project: model,
-      applyButtonCallback: () => NavigationProvider.of(context).pushNamed(
-        RootModuleRouting.applyProject,
-        arguments: ApplyProjectPageArguments(model.id),
-      ),
-    );
-  }
+  Widget itemBuilder(BuildContext context, ProjectModel model) => ProjectCard(
+    translations: context.watch<S>(),
+    project: model,
+    applyButtonCallback: () => NavigationProvider.of(context).pushNamed(
+      RootModuleRouting.applyProject,
+      arguments: ApplyProjectPageArguments(model.id),
+    ),
+  );
 }

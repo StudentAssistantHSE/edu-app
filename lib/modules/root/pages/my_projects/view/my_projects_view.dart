@@ -5,21 +5,8 @@ import 'package:edu_models/edu_models.dart';
 import 'package:edu_ui_components/edu_ui_components.dart';
 import 'package:flutter/material.dart';
 
-class MyProjectsView extends StatefulWidget {
+class MyProjectsView extends StatelessWidget {
   const MyProjectsView({ Key? key }) : super(key: key);
-
-  @override
-  _MyProjectsViewState createState() => _MyProjectsViewState();
-}
-
-class _MyProjectsViewState extends State<MyProjectsView> {
-  final _scrollController = ScrollController();
-
-  @override
-  void dispose() {
-    _scrollController.dispose();
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) => EduScaffold(
@@ -30,7 +17,6 @@ class _MyProjectsViewState extends State<MyProjectsView> {
       ),
     ),
     body: RefreshableModelsList<ProjectModel>(
-      scrollController: _scrollController,
       controller: const MyProjectsListController(),
     ),
     floatingActionButton: FloatingActionButton(

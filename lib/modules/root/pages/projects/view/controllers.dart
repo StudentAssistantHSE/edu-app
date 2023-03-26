@@ -8,25 +8,29 @@ import 'package:feature_models_list_provider/feature_models_list_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+class SearchCubit extends Cubit<String> {
+  SearchCubit() : super('');
+
+  void setSearch(String search) => emit(search);
+}
+
 class ProjectsListController extends RefreshableModelsListController<ProjectModel> {
   const ProjectsListController();
 
   @override
-  Widget itemBuilder(BuildContext context, ProjectModel model) {
-    final translations = context.watch<S>();
-    return ProjectCard(
-      contactsTitle: translations.root_projects_projectCard_contactsTitle,
-      nameTitle: translations.root_projects_projectCard_nameTitle,
-      descriptionTitle: translations.root_projects_projectCard_descriptionTitle,
-      applyButtonText: translations.root_projects_projectCard_applyButtonText,
-      recommendationsText: translations.root_projects_projectCard_recommendationsText,
-      project: model,
-      applyButtonCallback: () => NavigationProvider.of(context).pushNamed(
-        RootModuleRouting.applyProject,
-        arguments: ApplyProjectPageArguments(model.id),
-      ),
-    );
-  }
+  Map<String, dynamic> queryParameters(BuildContext context) => <String, dynamic> {
+    'search': context.read<SearchCubit>().state,
+  };
+
+  @override
+  Widget itemBuilder(BuildContext context, ProjectModel model) => ProjectCard(
+    translations: context.watch<S>(),
+    project: model,
+    applyButtonCallback: () => NavigationProvider.of(context).pushNamed(
+      RootModuleRouting.applyProject,
+      arguments: ApplyProjectPageArguments(model.id),
+    ),
+  );
 }
 
 class SearchInputController extends InputStateController<
@@ -35,12 +39,15 @@ class SearchInputController extends InputStateController<
   const SearchInputController();
 
   @override
-  ModelsListProviderEvent? onChangedEventBuilder(BuildContext context, String value) => ModelsListProviderRefreshRequested(
-    refreshState: true,
-    queryParameters: <String, dynamic> {
-      'search': value,
-    },
-  );
+  ModelsListProviderEvent? onChangedEventBuilder(BuildContext context, String value) {
+    context.read<SearchCubit>().setSearch(value);
+    return ModelsListProviderRefreshRequested(
+      refreshState: true,
+      queryParameters: <String, dynamic> {
+        'search': value,
+      },
+    );
+  }
 
   @override
   String? hintSelector(S translations) => translations.root_projects_search_input_hint;

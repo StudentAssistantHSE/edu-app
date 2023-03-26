@@ -7,6 +7,9 @@ class MessageInputController extends InputStateController<ApplyProjectEvent, App
   const MessageInputController();
 
   @override
+  String? initialValue(ApplyProjectState state) => state.message.value;
+
+  @override
   ApplyProjectEvent? onChangedEventBuilder(BuildContext context, String value) => ApplyProjectMessageFieldChanged(value);
 
   @override

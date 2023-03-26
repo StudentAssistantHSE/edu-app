@@ -89,6 +89,7 @@ class _BaseRefreshableModelsListState<T extends BaseModel> extends State<BaseRef
       }
     },
     buildWhen: (previous, current) => previous.models.value != current.models.value
+        || previous.count.value != current.count.value
         || previous.canLoadNextPage != current.canLoadNextPage
         || previous.status != current.status,
     builder: (context, state) {
@@ -126,7 +127,10 @@ class _BaseRefreshableModelsListState<T extends BaseModel> extends State<BaseRef
             child: LoadingIndicator(scale: 1.2),
           ),
         ),
-        enablePullUp: state.canLoadNextPage && widget.controller.overrideCanLoadNextPage && models.isNotEmpty,
+        enablePullUp: state.canLoadNextPage
+            && widget.controller.overrideCanLoadNextPage
+            && models.isNotEmpty
+            && models.length < (state.count.value ?? 0),
         enablePullDown: state.status.canRefresh && widget.controller.overrideCanRefresh,
         onRefresh: () => context.read<ModelsListProviderBloc<T>>().add(ModelsListProviderRefreshRequested(
           queryParameters: widget.controller.queryParameters(context),

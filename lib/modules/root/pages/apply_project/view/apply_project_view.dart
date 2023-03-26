@@ -73,7 +73,7 @@ class _MessageInputSettings extends InputWidgetSettings {
   TextAlignVertical get textAlignVertical => TextAlignVertical.top;
 
   const _MessageInputSettings() : super(
-    textInputAction: TextInputAction.done,
+    textInputAction: TextInputAction.newline,
     autofillHints: null,
     autofocus: true,
   );
