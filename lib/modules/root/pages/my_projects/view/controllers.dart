@@ -16,6 +16,7 @@ class MyProjectsListController extends RefreshableModelsListController<ProjectMo
       nameTitle: translations.root_projects_projectCard_nameTitle,
       descriptionTitle: translations.root_projects_projectCard_descriptionTitle,
       applyButtonText: translations.root_projects_projectCard_applyButtonText,
+      recommendationsText: translations.root_projects_projectCard_recommendationsText,
       project: model,
     );
   }

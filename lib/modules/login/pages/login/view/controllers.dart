@@ -1,12 +1,10 @@
-import 'package:edu_app/common/common.dart';
 import 'package:edu_app/modules/login/login_module.dart';
 import 'package:edu_localizations/edu_localizations.dart';
 import 'package:edu_ui_components/edu_ui_components.dart';
 import 'package:feature_login/feature_login.dart';
 import 'package:flutter/material.dart';
-import 'package:formz/formz.dart';
 
-class PageTitleTextController extends TextStateController {
+class PageTitleTextController extends TextController {
   const PageTitleTextController();
 
   @override
@@ -21,6 +19,9 @@ class EmailInputController extends InputStateController<LoginEvent, LoginState> 
 
   @override
   String? hintSelector(S translations) => translations.login_login_emailOrUsernameInputHint;
+
+  @override
+  bool errorSelector(LoginState state) => !state.email.isPure && state.email.isNotValid;
 
   @override
   bool disabledSelector(LoginState state) => state.isInProgress || state.isSuccess;
@@ -39,10 +40,10 @@ class PasswordInputController extends InputStateController<LoginEvent, LoginStat
   String? hintSelector(S translations) => translations.login_login_passwordInputHint;
 
   @override
-  bool disabledSelector(LoginState state) => state.isInProgress || state.isSuccess;
+  bool errorSelector(LoginState state) => !state.password.isPure && state.password.isNotValid;
 
   @override
-  bool canSubmitSelector(LoginState state) => state.fieldsStatus.isValidated;
+  bool disabledSelector(LoginState state) => state.isInProgress || state.isSuccess;
 }
 
 class SubmitLoginButtonController extends ButtonStateController<LoginEvent, LoginState> {
@@ -53,9 +54,6 @@ class SubmitLoginButtonController extends ButtonStateController<LoginEvent, Logi
 
   @override
   LoginEvent? eventBuilder(BuildContext context) => const LoginSubmitted();
-
-  @override
-  bool disabledSelector(LoginState state) => !state.fieldsStatus.isValidated;
 
   @override
   bool loadingSelector(LoginState state) => state.isInProgress || state.isSuccess;

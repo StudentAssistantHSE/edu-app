@@ -31,27 +31,24 @@ class _ApplicationsViewState extends State<ApplicationsView> {
     length: 2,
     child: EduScaffold(
       appBar: EduAppBar(
-        showBorderOnScroll: false,
+        bottomBorder: EduAppBarBottomBorderType.none,
         title: const SizedBox(
           height: 40,
           child: EduLogo(),
         ),
-        bottom: TabBar(
-          dividerColor: Colors.transparent,
+        bottom: EduTabBar(
           tabs: [
-            SizedBox(
-              width: double.infinity,
+            Tab(
               child: Builder(
-                builder: (context) => Tab(
-                  text: context.select<S, String>((value) => value.root_applications_sentApplicationsTabTitle),
+                builder: (context) => Text(
+                  context.select<S, String>((value) => value.root_applications_sentApplicationsTabTitle),
                 ),
               ),
             ),
-            SizedBox(
-              width: double.infinity,
+            Tab(
               child: Builder(
-                builder: (context) => Tab(
-                  text: context.select<S, String>((value) => value.root_applications_incomingApplicationsTabTitle),
+                builder: (context) => Text(
+                  context.select<S, String>((value) => value.root_applications_incomingApplicationsTabTitle),
                 ),
               ),
             ),

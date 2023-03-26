@@ -1,8 +1,8 @@
 import 'package:edu_localizations/edu_localizations.dart';
 import 'package:edu_models/edu_models.dart';
 import 'package:edu_ui_components/edu_ui_components.dart';
-import 'package:feature_create_project/feature_create_project.dart';
 import 'package:feature_models_list_provider/feature_models_list_provider.dart';
+import 'package:feature_profile_editing/feature_profile_editing.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -44,8 +44,8 @@ class _CategoriesState extends State<Categories> {
     children: [
       Builder(
         builder: (context) => Text(
-          context.select<S, String>((value) => value.root_createProject_categoriesText),
-          style: Theme.of(context).textTheme.bodyMedium,
+          context.select<S, String>((value) => value.root_profileEditing_categoriesTitle),
+          style: EduTheme.of(context).textTheme.body,
         ),
       ),
       const SizedBox(height: 4),
@@ -74,7 +74,7 @@ class _CategoriesState extends State<Categories> {
             fieldViewBuilder: (context, controller, focusNode, onSubmitted) => TextInput(
               controller: controller,
               focusNode: focusNode,
-              hint: context.select<S, String>((value) => value.root_createProject_categoriesInputHint),
+              hint: context.select<S, String>((value) => value.root_profileEditing_categoriesInputHint),
               onSubmitted: (value) {
                 if (value.trim().isEmpty) {
                   return;
@@ -82,7 +82,7 @@ class _CategoriesState extends State<Categories> {
                 _foundCategory = false;
                 onSubmitted();
                 if (!_foundCategory) {
-                  context.read<CreateProjectBloc>().add(CreateProjectCustomCategoryAdded(value.trim()));
+                  context.read<ProfileEditingBloc>().add(ProfileEditingCustomCategoryAdded(value.trim()));
                   _controller.clear();
                 }
                 _foundCategory = false;
@@ -90,7 +90,7 @@ class _CategoriesState extends State<Categories> {
             ),
             onSelected: (selection) {
               _foundCategory = true;
-              context.read<CreateProjectBloc>().add(CreateProjectExistingCategoryAdded(selection.value, selection.text));
+              context.read<ProfileEditingBloc>().add(ProfileEditingExistingCategoryAdded(selection.value, selection.text));
               _controller.clear();
             },
           );
@@ -99,32 +99,34 @@ class _CategoriesState extends State<Categories> {
       const SizedBox(height: 8),
       SizedBox(
         width: double.infinity,
-        child: BlocBuilder<CreateProjectBloc, CreateProjectState>(
+        child: BlocBuilder<ProfileEditingBloc, ProfileEditingState>(
           buildWhen: (previous, current) => previous.categories != current.categories,
           builder: (context, state) {
-            final theme = Theme.of(context);
+            final theme = EduTheme.of(context);
             return Wrap(
-              spacing: 8,
-              runSpacing: 8,
+              spacing: theme.categoriesListTheme.spacing,
+              runSpacing: theme.categoriesListTheme.spacing,
               children: [
                 for (final category in state.categories)
                   Chip(
                     materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
                     side: BorderSide.none,
                     shape: const StadiumBorder(),
-                    backgroundColor: theme.colorScheme.primary,
+                    backgroundColor: theme.categoriesListTheme.backgroundColor
+                        .resolveColorScheme(theme.colorScheme),
                     label: Text(
                       category.text,
-                      style: theme.textTheme.bodyMedium?.copyWith(color: theme.colorScheme.onPrimary),
+                      style: theme.categoriesListTheme.labelStyle.resolveTextTheme(theme.textTheme)
+                          .copyWith(color: theme.categoriesListTheme.foregroundColor.resolveColorScheme(theme.colorScheme)),
                     ),
                     padding: const EdgeInsets.symmetric(horizontal: 4),
-                    deleteIcon: Icon(Icons.close_rounded, color: theme.colorScheme.onPrimary),
-                    onDeleted: () => context.read<CreateProjectBloc>().add(
+                    deleteIcon: Icon(Icons.close_rounded, color: theme.colorScheme.themeMain),
+                    onDeleted: () => context.read<ProfileEditingBloc>().add(
                       category is ExistingCategory
-                          ? CreateProjectExistingCategoryRemoved(category.value)
+                          ? ProfileEditingExistingCategoryRemoved(category.value)
                           : category is CustomCategory
-                          ? CreateProjectCustomCategoryRemoved(category.value)
-                          : CreateProjectCustomCategoryRemoved(category.text),
+                          ? ProfileEditingCustomCategoryRemoved(category.value)
+                          : ProfileEditingCustomCategoryRemoved(category.text),
                     ),
                   ),
               ],

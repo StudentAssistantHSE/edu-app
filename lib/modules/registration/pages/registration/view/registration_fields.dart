@@ -33,7 +33,7 @@ class RegistrationFields extends StatelessWidget {
         controller: RepeatedPasswordInputController(),
       ),
       SizedBox(height: 24),
-      PrimaryButtonWidget<RegistrationBloc, RegistrationEvent, RegistrationState>(
+      EduGradientButtonWidget<RegistrationBloc, RegistrationEvent, RegistrationState>(
         controller: SubmitRegistrationButtonController(),
       ),
     ],

@@ -11,7 +11,7 @@ class DebugView extends StatelessWidget {
   @override
   Widget build(BuildContext context) => EduScaffold(
     appBar: EduAppBar(
-      leading: const EduAppBarBackButton(rootNavigator: true),
+      leading: const EduAppBarBackButton(),
     ),
     body: Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -34,10 +34,9 @@ class DebugView extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 8),
-          PrimaryButton(
+          EduGradientButton(
             text: 'Logout',
             onPressed: () => context.read<AuthenticationBloc>().add(const AuthenticationLoggedOut()),
-            expand: true,
           ),
         ],
       ),

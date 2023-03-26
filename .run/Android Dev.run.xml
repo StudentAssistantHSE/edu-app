@@ -3,8 +3,6 @@
     <option name="additionalArgs" value="--flavor flavor_dev" />
     <option name="buildFlavor" value="flavor_dev" />
     <option name="filePath" value="$PROJECT_DIR$/lib/main.dart" />
-    <method v="2">
-      <option name="RunConfigurationTask" enabled="true" run_configuration_name="Switch Secrets Dev" run_configuration_type="DartCommandLineRunConfigurationType" />
-    </method>
+    <method v="2" />
   </configuration>
 </component>

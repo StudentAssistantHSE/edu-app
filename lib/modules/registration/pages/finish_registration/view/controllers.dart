@@ -1,14 +1,14 @@
-import 'package:edu_app/common/common.dart';
 import 'package:edu_localizations/edu_localizations.dart';
+import 'package:edu_ui_components/edu_ui_components.dart';
 
-class PageTitleTextController extends TextStateController {
+class PageTitleTextController extends TextController {
   const PageTitleTextController();
 
   @override
   String textSelector(S translations) => translations.registration_finishRegistration_pageTitle;
 }
 
-class PageSubtitleTextController extends TextStateController {
+class PageSubtitleTextController extends TextController {
   const PageSubtitleTextController();
 
   @override

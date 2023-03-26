@@ -1,4 +1,3 @@
-import 'package:edu_app/common/common.dart';
 import 'package:edu_app/modules/registration/pages/finish_registration/view/app_bar_content.dart';
 import 'package:edu_app/modules/registration/pages/finish_registration/view/controllers.dart';
 import 'package:edu_app/modules/registration/pages/finish_registration/view/start_button.dart';
@@ -12,18 +11,30 @@ class FinishRegistrationView extends StatelessWidget {
   Widget build(BuildContext context) => EduScaffold(
     waveAppBarSettings: const WaveAppBarSettings(
       waveAppBar: WaveAppBar(
-        keyboardClosedSize: 0.64,
+        keyboardCollapsedSize: 0.64,
         collapseWhenKeyboardOpened: false,
         title: AppBarContent(),
       ),
-      leading: EduAppBarBackButton(rootNavigator: true),
+      leading: EduAppBarBackButton(),
     ),
     body: Column(
       children: const [
-        SizedBox(height: 28),
-        PageTitleTextWidget(controller: PageTitleTextController()),
+        SizedBox(height: 40),
+        Center(
+          child: TextWidget(
+            textStyle: TextThemeReference.pageTitle,
+            controller: PageTitleTextController(),
+            textAlign: TextAlign.center,
+          ),
+        ),
         SizedBox(height: 8),
-        PageSubtitleTextWidget(controller: PageSubtitleTextController()),
+        Center(
+          child: TextWidget(
+            textStyle: TextThemeReference.caption,
+            controller: PageSubtitleTextController(),
+            textAlign: TextAlign.center,
+          ),
+        ),
         SizedBox(height: 24),
         StartButton(),
       ],

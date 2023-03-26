@@ -24,17 +24,25 @@ class RootView extends StatelessWidget {
             SharedRoutesNavigatorIndexChanged(index),
           ),
           items: [
-            BottomNavigationBarItem(
-              icon: const Icon(CustomIcons.search, size: 24),
+            EduBottomNavigationBarItem(
+              icon: const Icon(CustomIcons.starOutline),
+              label: translations.root_bottomNavigationBar_recommendationsLabel,
+            ),
+            EduBottomNavigationBarItem(
+              icon: const Icon(CustomIcons.search),
               label: translations.root_bottomNavigationBar_searchLabel,
             ),
-            BottomNavigationBarItem(
-              icon: const Icon(CustomIcons.home, size: 24),
+            EduBottomNavigationBarItem(
+              icon: const Icon(CustomIcons.home),
               label: translations.root_bottomNavigationBar_myProjectsLabel,
             ),
-            BottomNavigationBarItem(
-              icon: const Icon(CustomIcons.comment, size: 24),
+            EduBottomNavigationBarItem(
+              icon: const Icon(CustomIcons.comment),
               label: translations.root_bottomNavigationBar_applicationsLabel,
+            ),
+            EduBottomNavigationBarItem(
+              icon: const Icon(CustomIcons.user),
+              label: translations.root_bottomNavigationBar_userLabel,
             ),
           ],
         );

@@ -34,8 +34,14 @@ class LoginView extends StatelessWidget {
     },
     child: const WaveAppBarPageView(
       children: [
-        PageTitleTextWidget(controller: PageTitleTextController()),
-        SizedBox(height: 36),
+        Center(
+          child: TextWidget(
+            textStyle: TextThemeReference.pageTitle,
+            controller: PageTitleTextController(),
+            textAlign: TextAlign.center,
+          ),
+        ),
+        SizedBox(height: 24),
         InputWidget<LoginBloc, LoginEvent, LoginState>(
           settings: EmailInputWidgetSettings(),
           controller: EmailInputController(),
@@ -48,13 +54,12 @@ class LoginView extends StatelessWidget {
           controller: PasswordInputController(),
         ),
         SizedBox(height: 24),
-        PrimaryButtonWidget<LoginBloc, LoginEvent, LoginState>(
+        EduGradientButtonWidget<LoginBloc, LoginEvent, LoginState>(
           controller: SubmitLoginButtonController(),
         ),
         SizedBox(height: 12),
-        PrimaryButtonWidget<LoginBloc, LoginEvent, LoginState>(
+        EduOutlinedButtonWidget<LoginBloc, LoginEvent, LoginState>(
           controller: RegistrationButtonController(),
-          style: PrimaryButtonStyle.elevated,
         ),
       ],
     ),

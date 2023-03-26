@@ -29,7 +29,7 @@ abstract class ModulesRoutes {
     ),
     ModulesRoutes.registration: (settings) => MaterialPageRoute<void>(
       settings: settings,
-      builder: (context) => RegistrationModule(),
+      builder: (context) => const RegistrationModule(),
     ),
     ModulesRoutes.root: (settings) => MaterialPageRoute<void>(
       settings: settings,

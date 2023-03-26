@@ -1,5 +1,6 @@
 import 'package:edu_app/di/locator.dart';
 import 'package:edu_app/modules/modules_routes.dart';
+import 'package:edu_ui_components/edu_ui_components.dart';
 import 'package:flutter/material.dart';
 
 class DebugButton extends StatefulWidget {
@@ -29,10 +30,14 @@ class _DebugButtonState extends State<DebugButton> {
         if (_offsetX >= boundX) { _offsetX = boundX; }
         if (_offsetY >= boundY) { _offsetY = boundY; }
       }),
-      child: ElevatedButton(
-        child: const Text('DEBUG'),
-        onPressed: () => locator.app.navigation.pushNamed(
-          ModulesRoutes.debug,
+      child: Material(
+        borderRadius: BorderRadius.circular(4),
+        child: EduGradientButton(
+          text: 'DEBUG',
+          expand: false,
+          onPressed: () => locator.app.navigation.pushNamed(
+            ModulesRoutes.debug,
+          ),
         ),
       ),
     ),

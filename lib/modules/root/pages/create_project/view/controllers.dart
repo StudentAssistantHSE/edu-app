@@ -2,7 +2,6 @@ import 'package:edu_localizations/edu_localizations.dart';
 import 'package:edu_ui_components/edu_ui_components.dart';
 import 'package:feature_create_project/feature_create_project.dart';
 import 'package:flutter/material.dart';
-import 'package:formz/formz.dart';
 
 class NameInputController extends InputStateController<CreateProjectEvent, CreateProjectState> {
   const NameInputController();
@@ -15,6 +14,9 @@ class NameInputController extends InputStateController<CreateProjectEvent, Creat
 
   @override
   bool disabledSelector(CreateProjectState state) => state.isInProgress || state.isSuccess;
+
+  @override
+  bool errorSelector(CreateProjectState state) => !state.name.isPure && state.name.isNotValid;
 }
 
 class DescriptionInputController extends InputStateController<CreateProjectEvent, CreateProjectState> {
@@ -28,6 +30,9 @@ class DescriptionInputController extends InputStateController<CreateProjectEvent
 
   @override
   bool disabledSelector(CreateProjectState state) => state.isInProgress || state.isSuccess;
+
+  @override
+  bool errorSelector(CreateProjectState state) => !state.description.isPure && state.description.isNotValid;
 }
 
 class ContactsInputController extends InputStateController<CreateProjectEvent, CreateProjectState> {
@@ -41,6 +46,9 @@ class ContactsInputController extends InputStateController<CreateProjectEvent, C
 
   @override
   bool disabledSelector(CreateProjectState state) => state.isInProgress || state.isSuccess;
+
+  @override
+  bool errorSelector(CreateProjectState state) => !state.contacts.isPure && state.contacts.isNotValid;
 }
 
 class SubmitCreateProjectButtonController extends ButtonStateController<CreateProjectEvent, CreateProjectState> {
@@ -51,9 +59,6 @@ class SubmitCreateProjectButtonController extends ButtonStateController<CreatePr
 
   @override
   CreateProjectEvent? eventBuilder(BuildContext context) => const CreateProjectSubmitted();
-
-  @override
-  bool disabledSelector(CreateProjectState state) => !state.fieldsStatus.isValidated;
 
   @override
   bool loadingSelector(CreateProjectState state) => state.isInProgress || state.isSuccess;

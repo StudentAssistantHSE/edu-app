@@ -48,7 +48,7 @@ class ApplyProjectView extends StatelessWidget {
               ),
             ),
             SizedBox(height: 16),
-            PrimaryButtonWidget<ApplyProjectBloc, ApplyProjectEvent, ApplyProjectState>(
+            EduGradientButtonWidget<ApplyProjectBloc, ApplyProjectEvent, ApplyProjectState>(
               controller: SubmitApplyProjectButtonController(),
             ),
             SizedBox(height: 16),

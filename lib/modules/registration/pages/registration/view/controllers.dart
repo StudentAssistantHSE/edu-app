@@ -1,13 +1,11 @@
-import 'package:edu_app/common/common.dart';
 import 'package:edu_core/edu_core.dart';
 import 'package:edu_localizations/edu_localizations.dart';
 import 'package:edu_ui_components/edu_ui_components.dart';
 import 'package:feature_registration/feature_registration.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:formz/formz.dart';
 
-class PageTitleTextController extends TextStateController {
+class PageTitleTextController extends TextController {
   const PageTitleTextController();
 
   @override
@@ -27,6 +25,9 @@ class EmailInputController extends InputStateController<RegistrationEvent, Regis
   String? hintSelector(S translations) => translations.registration_registration_emailInputHint;
 
   @override
+  bool errorSelector(RegistrationState state) => !state.email.isPure && state.email.isNotValid;
+
+  @override
   bool disabledSelector(RegistrationState state) => state.isInProgress;
 }
 
@@ -41,6 +42,9 @@ class FullNameInputController extends InputStateController<RegistrationEvent, Re
 
   @override
   String? hintSelector(S translations) => translations.registration_registration_usernameInputHint;
+
+  @override
+  bool errorSelector(RegistrationState state) => !state.fullName.isPure && state.fullName.isNotValid;
 
   @override
   bool disabledSelector(RegistrationState state) => state.isInProgress;
@@ -62,7 +66,10 @@ class PasswordInputController extends InputStateController<RegistrationEvent, Re
   bool disabledSelector(RegistrationState state) => state.isInProgress;
 
   @override
-  bool? isValidSelector(RegistrationState state) => state.password.valid;
+  bool errorSelector(RegistrationState state) => !state.password.isPure && state.password.isNotValid;
+
+  @override
+  bool? isValidSelector(RegistrationState state) => state.password.isValid;
 
   @override
   void onValidationPrefixPressed(BuildContext context, RegistrationState state) {
@@ -73,19 +80,19 @@ class PasswordInputController extends InputStateController<RegistrationEvent, Re
       context,
       title: translations.registration_registration_passwordRequiredSymbolsDialogTitle,
       items: [
-        CheckListItem(
+        CheckListDialogItem(
           translations.registration_registration_passwordRequiredFromToSymbols(8, 128),
           isCompleted: passwordValue.length >= 8 && passwordValue.length <= 128,
         ),
-        CheckListItem(
+        CheckListDialogItem(
           translations.registration_registration_passwordRequiredSymbolsDialogLowercaseLatinLettersItem,
           isCompleted: RegExpUtils.anyLowercaseLatinLetter.hasMatch(passwordValue),
         ),
-        CheckListItem(
+        CheckListDialogItem(
           translations.registration_registration_passwordRequiredSymbolsDialogUppercaseLatinLettersItem,
           isCompleted: RegExpUtils.anyUppercaseLatinLetter.hasMatch(passwordValue),
         ),
-        CheckListItem(
+        CheckListDialogItem(
           translations.registration_registration_passwordRequiredSymbolsDialogDigitsItem,
           isCompleted: RegExpUtils.anyDigit.hasMatch(passwordValue),
         ),
@@ -111,7 +118,7 @@ class RepeatedPasswordInputController extends InputStateController<RegistrationE
   bool disabledSelector(RegistrationState state) => state.isInProgress;
 
   @override
-  bool canSubmitSelector(RegistrationState state) => state.fieldsStatus.isValidated;
+  bool errorSelector(RegistrationState state) => !state.repeatedPassword.isPure && state.repeatedPassword.isNotValid;
 }
 
 class SubmitRegistrationButtonController extends ButtonStateController<RegistrationEvent, RegistrationState> {
@@ -122,9 +129,6 @@ class SubmitRegistrationButtonController extends ButtonStateController<Registrat
 
   @override
   RegistrationEvent? eventBuilder(BuildContext context) => const RegistrationSubmitted();
-
-  @override
-  bool disabledSelector(RegistrationState state) => !state.fieldsStatus.isValidated;
 
   @override
   void onPressed(BuildContext context) => FocusManager.instance.primaryFocus?.unfocus();

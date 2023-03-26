@@ -30,10 +30,14 @@ dependencies:
     path: ../edu-app-core/features/feature_create_project
   feature_login:
     path: ../edu-app-core/features/feature_login
+  feature_model_provider:
+    path: ../edu-app-core/features/feature_model_provider
   feature_models_list_provider:
     path: ../edu-app-core/features/feature_models_list_provider
   feature_process_application:
     path: ../edu-app-core/features/feature_process_application
+  feature_profile_editing:
+    path: ../edu-app-core/features/feature_profile_editing
   feature_registration:
     path: ../edu-app-core/features/feature_registration
   feature_settings:
@@ -42,7 +46,7 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_bloc: 8.1.1
-  formz: 0.4.1
+  formz: 0.6.0
   get_it: 7.2.0
   injectable: 2.1.0
   pull_to_refresh: 2.0.0

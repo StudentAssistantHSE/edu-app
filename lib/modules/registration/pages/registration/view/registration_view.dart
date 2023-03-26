@@ -51,20 +51,28 @@ class RegistrationView extends StatelessWidget {
       },
       child: BlocListener<RegistrationBloc, RegistrationState>(
         listenWhen: (previous, current) => previous.status != current.status,
-        listener: (context, state) =>
-          ModuleControllerProvider.of<RegistrationModuleController>(context)
-              ?.useWillPopScope.value = state.isInProgress,
+        listener: (context, state) {
+          if (state.isInProgress) {
+            NavigationProvider.of(context).lockRoute();
+          } else {
+            NavigationProvider.of(context).unlockRoute();
+          }
+        },
         child: BlocSelector<RegistrationBloc, RegistrationState, bool>(
           selector: (state) => state.isInProgress,
           builder: (context, isInProgress) => WaveAppBarPageView(
             automaticallyApplyLeading: !isInProgress,
             leading: isInProgress
                 ? null
-                : const EduAppBarBackButton(rootNavigator: true),
+                : const EduAppBarBackButton(),
             children: const [
-              SizedBox(height: 28),
-              PageTitleTextWidget(
-                controller: PageTitleTextController(),
+              SizedBox(height: 40),
+              Center(
+                child: TextWidget(
+                  textStyle: TextThemeReference.pageTitle,
+                  controller: PageTitleTextController(),
+                  textAlign: TextAlign.center,
+                ),
               ),
               SizedBox(height: 24),
               RegistrationFields(),

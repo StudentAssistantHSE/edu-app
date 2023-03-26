@@ -3,18 +3,23 @@ part of 'root_module.dart';
 class RootModuleRouting extends BaseModuleRouting<RootModuleArguments> {
   static const root = 'root';
 
+  static const recommendations = 'recommendations';
   static const projects = 'projects';
   static const myProjects = 'my-projects';
   static const applications = 'applications';
+  static const profile = 'profile';
   static const applyProject = 'apply-project';
   static const createProject = 'create-project';
+  static const profileEditing = 'profile-editing';
 
   static const moduleName = 'root';
 
   static const initialSharedRoutes = [
+    recommendations,
     projects,
     myProjects,
     applications,
+    profile,
   ];
 
   static final RoutesTable _table = {
@@ -41,6 +46,18 @@ class RootModuleRouting extends BaseModuleRouting<RootModuleArguments> {
     RootModuleRouting.createProject: (settings) => MaterialPageRoute<void>(
       settings: settings,
       builder: (context) => CreateProjectPage(),
+    ),
+    RootModuleRouting.recommendations: (settings) => MaterialPageRoute<void>(
+      settings: settings,
+      builder: (context) => RecommendationsPage(),
+    ),
+    RootModuleRouting.profile: (settings) => MaterialPageRoute<void>(
+      settings: settings,
+      builder: (context) => ProfilePage(),
+    ),
+    RootModuleRouting.profileEditing: (settings) => MaterialPageRoute<void>(
+      settings: settings,
+      builder: (context) => ProfileEditingPage(),
     ),
   };
 

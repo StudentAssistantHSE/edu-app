@@ -10,13 +10,15 @@ class RefreshableModelsList<T extends BaseModel> extends BaseRefreshableModelsLi
     ScrollController? scrollController,
     EdgeInsets padding = const EdgeInsets.fromLTRB(16, 0, 16, 16),
     Key? key,
+    Widget? separator,
   }) : super(
     controller: controller,
+    listPadding: padding,
     listViewBuilder: (context, models) => ListView.separated(
       controller: scrollController,
       padding: padding,
       itemCount: models.length,
-      separatorBuilder: (_, __) => const SizedBox(height: 16),
+      separatorBuilder: (_, __) => separator ?? const SizedBox(height: 16),
       itemBuilder: (context, index) => controller.itemBuilder(context, models[index]),
     ),
     loadingIndicatorKey: loadingIndicatorKey,

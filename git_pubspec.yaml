@@ -60,6 +60,11 @@ dependencies:
       url: git@github.com:KutilinSA/edu-app-core.git
       path: features/feature_login
       ref: v0.0.1
+  feature_model_provider:
+    git:
+      url: git@github.com:KutilinSA/edu-app-core.git
+      path: features/feature_model_provider
+      ref: v0.0.1
   feature_models_list_provider:
     git:
       url: git@github.com:KutilinSA/edu-app-core.git
@@ -69,6 +74,11 @@ dependencies:
     git:
       url: git@github.com:KutilinSA/edu-app-core.git
       path: features/feature_process_application
+      ref: v0.0.1
+  feature_profile_editing:
+    git:
+      url: git@github.com:KutilinSA/edu-app-core.git
+      path: features/feature_profile_editing
       ref: v0.0.1
   feature_registration:
     git:
@@ -84,7 +94,7 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_bloc: 8.1.1
-  formz: 0.4.1
+  formz: 0.6.0
   get_it: 7.2.0
   injectable: 2.1.0
   pull_to_refresh: 2.0.0

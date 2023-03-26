@@ -13,9 +13,8 @@ class StartButton extends StatelessWidget {
   Widget build(BuildContext context) => ScreenGrid(
     column: 0,
     additionalOffset: 32,
-    child: PrimaryButton(
+    child: EduGradientButton(
       text: context.watch<S>().registration_finishRegistration_startButtonText,
-      expand: true,
       onPressed: () {
         final token = ArgumentsProvider.of<FinishRegistrationPageArguments>(context)?.token;
         if (token == null || token.isEmpty) {

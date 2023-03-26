@@ -12,6 +12,7 @@ class RefreshableModelsGridList<T extends BaseModel> extends BaseRefreshableMode
     Key? key,
   }) : super(
     controller: controller,
+    listPadding: padding,
     listViewBuilder: (context, models) => GridView.builder(
       controller: scrollController,
       padding: padding,

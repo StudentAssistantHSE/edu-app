@@ -24,9 +24,9 @@ class ScrollableBodyView extends StatelessWidget {
       physics: const ClampingScrollPhysics(),
       padding: EdgeInsets.fromLTRB(
         padding,
-        useTopPadding ? 36 : 0,
+        useTopPadding ? 40 : 0,
         padding,
-        mediaQuery.viewInsets.bottom + 24,
+        ScreenGrid.bottomListInset(mediaQuery),
       ),
       children: children,
     );

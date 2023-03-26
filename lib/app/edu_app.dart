@@ -38,6 +38,7 @@ class _App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = context.select<SettingsBloc, ThemeType>((value) => value.state.settings.themeType).themeData;
     return BlocListener<AuthenticationBloc, AuthenticationState> (
       listener: (context, state) => state.isAuthenticated
           ? locator.app.navigation.pushNamedAndRemoveUntil(
@@ -52,22 +53,25 @@ class _App extends StatelessWidget {
         title: 'Edu',
         localizationsDelegates: S.localizationsDelegates,
         supportedLocales: S.supportedLocales,
-        theme: context.select<SettingsBloc, ThemeType>((value) => value.state.settings.themeType).themeData,
+        theme: ThemeData(brightness: theme.brightness),
         scrollBehavior: const NoIndicatorsScrollBehaviour(),
         builder: (context, child) {
           final page = kDebugMode
               ? Stack(
-            children: [
-              Positioned.fill(child: child ?? const SizedBox.shrink()),
-              const DebugButton(),
-            ],
-          )
+                  children: [
+                    Positioned.fill(child: child ?? const SizedBox.shrink()),
+                    const DebugButton(),
+                  ],
+                )
               : child ?? const SizedBox.shrink();
 
-          return RepositoryProvider<S>.value(
-            value: S.of(context) ?? (throw const NoElementInContextException<S>()),
-            child: UnFocusHandler(
-              child: page,
+          return AnimatedEduTheme(
+            data: theme,
+            child: RepositoryProvider<S>.value(
+              value: S.of(context) ?? (throw const NoElementInContextException<S>()),
+              child: UnFocusHandler(
+                child: page,
+              ),
             ),
           );
         },

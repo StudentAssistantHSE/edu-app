@@ -12,11 +12,10 @@ class RegistrationModule extends BaseModule<
   RegistrationModuleRouting,
   RegistrationModuleController
 > {
-  RegistrationModule({
+  const RegistrationModule({
     ControllerBuilder<RegistrationModuleController>? controllerBuilder,
     Key? key,
   }) : super(
-    useWillPopScope: (controller) => controller?.useWillPopScope,
     moduleControllerBuilder: controllerBuilder,
     moduleRouting: const RegistrationModuleRouting(),
     key: key,

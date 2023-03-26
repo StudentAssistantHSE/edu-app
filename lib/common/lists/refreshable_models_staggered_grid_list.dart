@@ -13,6 +13,7 @@ class RefreshableModelsStaggeredGridList<T extends BaseModel> extends BaseRefres
     Key? key,
   }) : super(
     controller: controller,
+    listPadding: padding,
     listViewBuilder: (context, models) => GridView.builder(
       controller: scrollController,
       padding: padding,

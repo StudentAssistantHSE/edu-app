@@ -17,7 +17,7 @@ class AppBarContent extends StatelessWidget {
           fit: StackFit.expand,
           alignment: Alignment.center,
           children: [
-            const Positioned.fill(child: Firework(style: FireworkStyle.primary300)),
+            const Positioned.fill(child: Firework(color: ColorSchemeReference.primary300)),
             Positioned(
               width: logoSize.shortestSide,
               height: logoSize.shortestSide,

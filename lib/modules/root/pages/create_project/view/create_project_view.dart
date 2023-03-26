@@ -54,7 +54,7 @@ class CreateProjectView extends StatelessWidget {
           SizedBox(height: 16),
           Categories(),
           SizedBox(height: 16),
-          PrimaryButtonWidget<CreateProjectBloc, CreateProjectEvent, CreateProjectState>(
+          EduGradientButtonWidget<CreateProjectBloc, CreateProjectEvent, CreateProjectState>(
             controller: SubmitCreateProjectButtonController(),
           ),
           SizedBox(height: 16),

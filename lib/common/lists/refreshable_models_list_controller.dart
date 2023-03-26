@@ -7,7 +7,7 @@ abstract class RefreshableModelsListController<T extends BaseModel> {
 
   const RefreshableModelsListController();
 
-  Map<String, String?>? queryParameters(BuildContext context) => null;
+  Map<String, dynamic>? queryParameters(BuildContext context) => null;
 
   Widget itemBuilder(BuildContext context, T model);
 }
