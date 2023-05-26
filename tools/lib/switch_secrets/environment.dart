@@ -1,6 +1,7 @@
 enum Environment {
   test,
   dev,
+  production,
 }
 
 extension EnvironmentConverter on Environment {
@@ -10,6 +11,8 @@ extension EnvironmentConverter on Environment {
         return 'test';
       case Environment.dev:
         return 'dev';
+      case Environment.production:
+        return 'production';
     }
   }
 
@@ -19,6 +22,8 @@ extension EnvironmentConverter on Environment {
         return Environment.test;
       case 'dev':
         return Environment.dev;
+      case 'production':
+        return Environment.production;
       default:
         return null;
     }

@@ -13,4 +13,7 @@ dependencies:
 dev_dependencies:
   dependency_validator: 3.2.2
   lint_rules:
-    path: ../../edu-app-core/lint_rules
+    git:
+      url: git@github.com:KutilinSA/edu-app-core.git
+      path: lint_rules
+      ref: v0.0.1
